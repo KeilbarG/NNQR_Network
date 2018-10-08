@@ -2,11 +2,11 @@
 # clear all variables
 rm(list = ls(all = TRUE))
 graphics.off()
-setwd("C:/Users/Georg_PC/Documents/Thesis/Final_20180626/Code")
+setwd("~/Desktop/Thesis/20180626_Final/Code")
 
 
 # install and load packages
-libraries = c("quantreg","qrnn","NeuralNetTools","quantmod","h2o","igraph","lattice")
+libraries = c("igraph")
 lapply(libraries, function(x) if (!(x %in% installed.packages())) {
   install.packages(x)
 })
@@ -20,7 +20,7 @@ spill_All = as.matrix(read.csv(file = "Spillover_All.csv"))
 spill_Leh = as.matrix(read.csv(file = "Spillover_Lehman.csv"))
 
 
-# plot all
+# set the parameters
 network = graph_from_adjacency_matrix(spill_All, weighted = T, diag = F)
 E(network)$width = ((E(network)$weight)) * 5
 E(network)$color = "black"
